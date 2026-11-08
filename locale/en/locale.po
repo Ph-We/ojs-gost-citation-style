@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gostCitationStyle 1.0.1\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "plugins.generic.gostCitationStyle.displayName"
+msgstr "GOST R 7.0.100–2018 Plugin"
+
+msgid "plugins.generic.gostCitationStyle.description"
+msgstr "Adds a GOST R 7.0.100–2018 journal-article style to the stock Citation Style Language plugin. Requires OJS 3.5 and Citation Style Language."
+
+msgid "plugins.generic.gostCitationStyle.style"
+msgstr "ГОСТ 2018"

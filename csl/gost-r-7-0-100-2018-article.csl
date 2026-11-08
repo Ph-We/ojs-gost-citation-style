@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" default-locale="ru-RU">
+  <info>
+    <title>ГОСТ Р 7.0.100–2018 — журнальная статья (OJS)</title>
+    <id>http://www.zotero.org/styles/gost-r-7-0-100-2018-ojs-article</id>
+    <link href="http://www.zotero.org/styles/gost-r-7-0-100-2018-ojs-article" rel="self"/>
+    <link href="https://gist.github.com/rodion-maltsev/ea42f0f17e4e152dd8590587737b9322" rel="template"/>
+    <link href="https://docs.cntd.ru/document/1200161674" rel="documentation"/>
+    <author>
+      <name>Roman Raspopov, В. А. Рычков, bibliostyle.ru</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="generic-base"/>
+    <summary>Узкий профиль ГОСТ Р 7.0.100–2018 для блока «Как цитировать» в OJS 3.5: только article-journal. DOI заменяет URL и дату обращения. Из исходного стиля удалены сортировка, цитирование и неприменимые типы ресурсов; порядок областей и обработка авторов изменены.</summary>
+    <updated>2026-11-09T00:00:00+00:00</updated>
+    <rights>Производная работа от стиля Roman Raspopov, В. А. Рычкова, bibliostyle.ru. Creative Commons Attribution-ShareAlike 3.0 Unported: https://creativecommons.org/licenses/by-sa/3.0/</rights>
+  </info>
+
+  <!-- OJS passes the active UI locale to CiteProc. These profile terms must
+       remain Russian regardless of that locale. -->
+  <locale>
+    <terms>
+      <term name="et-al">[и др.]</term>
+      <term name="page-range-delimiter">–</term>
+    </terms>
+  </locale>
+
+  <!-- PHP передаёт сюда только первого автора и только при 1–3 авторах. -->
+  <macro name="record-heading">
+    <names variable="editor" suffix=". ">
+      <name name-as-sort-order="all" initialize-with=". " sort-separator=", "/>
+    </names>
+  </macro>
+
+  <macro name="responsibility">
+    <names variable="author">
+      <name delimiter=", " delimiter-precedes-et-al="never" et-al-min="5" et-al-use-first="3" initialize-with=". "/>
+    </names>
+  </macro>
+
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="url-with-access-date">
+    <choose>
+      <if variable="URL">
+        <group delimiter=" ">
+          <text value="URL:"/>
+          <text variable="URL"/>
+          <choose>
+            <if variable="accessed">
+              <group prefix="(" suffix=")" delimiter=" ">
+                <text value="дата обращения:"/>
+                <date variable="accessed">
+                  <date-part name="day" form="numeric-leading-zeros" suffix="."/>
+                  <date-part name="month" form="numeric-leading-zeros" suffix="."/>
+                  <date-part name="year"/>
+                </date>
+              </group>
+            </if>
+          </choose>
+        </group>
+      </if>
+    </choose>
+  </macro>
+
+  <!-- CSL requires a citation element. OJS uses only bibliography below. -->
+  <citation>
+    <layout>
+      <text variable="title"/>
+    </layout>
+  </citation>
+
+  <bibliography>
+    <layout>
+      <choose>
+        <if type="article-journal">
+          <group delimiter=". – " suffix=".">
+            <group delimiter=" // ">
+              <group delimiter=". – ">
+                <group delimiter=" / ">
+                  <group>
+                    <text macro="record-heading"/>
+                    <text variable="title"/>
+                  </group>
+                  <text macro="responsibility"/>
+                </group>
+                <text variable="DOI" prefix="DOI "/>
+              </group>
+              <text variable="container-title"/>
+            </group>
+            <text macro="year"/>
+            <group delimiter=", ">
+              <text variable="volume" prefix="Т. "/>
+              <text variable="issue" prefix="№ "/>
+            </group>
+            <text variable="page" prefix="С. "/>
+            <choose>
+              <if variable="DOI" match="none">
+                <text macro="url-with-access-date"/>
+              </if>
+            </choose>
+          </group>
+        </if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
