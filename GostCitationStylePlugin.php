@@ -54,8 +54,7 @@ class GostCitationStylePlugin extends GenericPlugin
             'id' => self::STYLE_ID,
             'title' => __('plugins.generic.gostCitationStyle.style'),
             'isEnabled' => false,
-            'useCsl' => $this->getPluginPath()
-                . '/csl/gost-r-7-0-100-2018-article.csl',
+            'useCsl' => $this->getPluginPath() . '/csl/gost-r-7-0-100-2018-article.csl',
         ];
 
         return false;
